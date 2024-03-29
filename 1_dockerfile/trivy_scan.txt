@@ -1,0 +1,51 @@
+4:37@1_dockerfile:~$ trivy image energi:latest
+2024-03-30T04:38:19.763+0800    INFO    Need to update DB
+2024-03-30T04:38:19.763+0800    INFO    DB Repository: ghcr.io/aquasecurity/trivy-db:2
+2024-03-30T04:38:19.763+0800    INFO    Downloading DB...
+44.65 MiB / 44.65 MiB [-------------------------------------------------------------------------------------------------------------------------------------------] 100.00% 24.13 MiB p/s 2.1s
+2024-03-30T04:38:24.881+0800    INFO    Vulnerability scanning is enabled
+2024-03-30T04:38:24.882+0800    INFO    Secret scanning is enabled
+2024-03-30T04:38:24.882+0800    INFO    If your scanning is slow, please try '--scanners vuln' to disable secret scanning
+2024-03-30T04:38:24.882+0800    INFO    Please see also https://aquasecurity.github.io/trivy/v0.50/docs/scanner/secret/#recommendation for faster secret detection
+2024-03-30T04:38:28.891+0800    INFO    Detected OS: ubuntu
+2024-03-30T04:38:28.891+0800    WARN    This OS version is not on the EOL list: ubuntu 24.04
+2024-03-30T04:38:28.891+0800    INFO    Detecting Ubuntu vulnerabilities...
+2024-03-30T04:38:28.892+0800    INFO    Number of language-specific files: 1
+2024-03-30T04:38:28.892+0800    INFO    Detecting gobinary vulnerabilities...
+
+energi:latest (ubuntu 24.04)
+
+Total: 0 (UNKNOWN: 0, LOW: 0, MEDIUM: 0, HIGH: 0, CRITICAL: 0)
+
+
+app/energi/bin/energi3 (gobinary)
+
+Total: 6 (UNKNOWN: 0, LOW: 0, MEDIUM: 4, HIGH: 2, CRITICAL: 0)
+
+┌─────────────────────────────────────┬────────────────┬──────────┬────────┬───────────────────┬───────────────┬──────────────────────────────────────────────────────────────┐
+│               Library               │ Vulnerability  │ Severity │ Status │ Installed Version │ Fixed Version │                            Title                             │
+├─────────────────────────────────────┼────────────────┼──────────┼────────┼───────────────────┼───────────────┼──────────────────────────────────────────────────────────────┤
+│ github.com/prometheus/client_golang │ CVE-2022-21698 │ HIGH     │ fixed  │ v1.11.0           │ 1.11.1        │ prometheus/client_golang: Denial of service using            │
+│                                     │                │          │        │                   │               │ InstrumentHandlerCounter                                     │
+│                                     │                │          │        │                   │               │ https://avd.aquasec.com/nvd/cve-2022-21698                   │
+├─────────────────────────────────────┼────────────────┼──────────┤        ├───────────────────┼───────────────┼──────────────────────────────────────────────────────────────┤
+│ golang.org/x/crypto                 │ CVE-2023-48795 │ MEDIUM   │        │ v0.16.0           │ 0.17.0        │ ssh: Prefix truncation attack on Binary Packet Protocol      │
+│                                     │                │          │        │                   │               │ (BPP)                                                        │
+│                                     │                │          │        │                   │               │ https://avd.aquasec.com/nvd/cve-2023-48795                   │
+├─────────────────────────────────────┼────────────────┼──────────┤        ├───────────────────┤               ├──────────────────────────────────────────────────────────────┤
+│ golang.org/x/net                    │ CVE-2023-39325 │ HIGH     │        │ v0.10.0           │               │ golang: net/http, x/net/http2: rapid stream resets can cause │
+│                                     │                │          │        │                   │               │ excessive work (CVE-2023-44487)                              │
+│                                     │                │          │        │                   │               │ https://avd.aquasec.com/nvd/cve-2023-39325                   │
+│                                     ├────────────────┼──────────┤        │                   ├───────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2023-3978  │ MEDIUM   │        │                   │ 0.13.0        │ golang.org/x/net/html: Cross site scripting                  │
+│                                     │                │          │        │                   │               │ https://avd.aquasec.com/nvd/cve-2023-3978                    │
+│                                     ├────────────────┤          │        │                   ├───────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2023-44487 │          │        │                   │ 0.17.0        │ HTTP/2: Multiple HTTP/2 enabled web servers are vulnerable   │
+│                                     │                │          │        │                   │               │ to a DDoS attack...                                          │
+│                                     │                │          │        │                   │               │ https://avd.aquasec.com/nvd/cve-2023-44487                   │
+├─────────────────────────────────────┼────────────────┤          │        ├───────────────────┼───────────────┼──────────────────────────────────────────────────────────────┤
+│ google.golang.org/protobuf          │ CVE-2024-24786 │          │        │ v1.27.1           │ 1.33.0        │ golang-protobuf: encoding/protojson, internal/encoding/json: │
+│                                     │                │          │        │                   │               │ infinite loop in protojson.Unmarshal when unmarshaling       │
+│                                     │                │          │        │                   │               │ certain forms of...                                          │
+│                                     │                │          │        │                   │               │ https://avd.aquasec.com/nvd/cve-2024-24786                   │
+└─────────────────────────────────────┴────────────────┴──────────┴────────┴───────────────────┴───────────────┴──────────────────────────────────────────────────────────────┘

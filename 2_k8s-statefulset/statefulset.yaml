@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: energi
+spec:
+  selector:
+    matchLabels:
+      app: energi
+  serviceName: energi
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: energi
+    spec:
+      containers:
+        - name: energi
+          image: energi:latest
+          ports:
+          - name: energi
+            containerPort: 80
+          volumeMounts:
+          - name: energi-pvc
+            mountPath: /app/energi
+  volumeClaimTemplates:
+  - metadata:
+      name: energi-pvc
+    spec:
+      accessModes: ["ReadWriteOnce"]
+      resources:
+        requests:
+          storage: 1Gi
